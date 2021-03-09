@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/base.min.css" integrity="sha512-DS7xK4BXM8wJFErNo9bCJHIjyr3mANPRtGYIWXzpnDmPm8G5SWtX6L0ltotlsV2/2ZuN3yCyw9uGxMjFaTUcwg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/components.min.css" integrity="sha512-f6TS5CFJrH/EWmarcBwG54/kW9wwejYMcw+I7fRnGf33Vv4yCvy4BecCKTti3l8e8HnUiIbxx3V3CuUYGqR1uQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind-dark.min.css" integrity="sha512-WvyKyiVHgInX5UQt67447ExtRRZG/8GUijaq1MpqTNYp8wY4/EJOG5bI80sRp/5crDy4Z6bBUydZI2OFV3Vbtg==" crossorigin="anonymous" />
+</head>
+
+<body>
+
+
+    <div name="formulario-inclusao" class="w-full m-10">
+
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="id">ID</label>
+                <input type="text" id="id" name="id"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="editora">Editora</label>
+                <input type="text" id="editora" name="editora"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+        </div>
+
+
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="titulo">Titulo</label>
+                <input type="text" id="titulo" name="titulo"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="autor">Autor</label>
+                <input type="text" id="autor" name="autor"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="ano">Ano</label>
+                <input type="date" id="ano" name="ano"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="preco">Preço</label>
+                <input type="text" id="preco" name="preco"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="quantidade">Quantidade</label>
+                <input min="0" type="number" id="quantidade" name="quantidade"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <label class="mb-1" for="tipo">Tipo</label>
+                <input type="text" id="tipo" name="tipo"
+                    class="py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600 border border-5 border-gray-500" />
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <button class="m-2">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col text-center w-3/6 px-2">
+                <button class="m-2">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
