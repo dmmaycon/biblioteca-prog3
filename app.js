@@ -1,5 +1,37 @@
-const Lista = {
-    template: `<div name="lista" class="w-full m-10">
+const Lista = Vue.component('lista', {
+    data: function() {
+        return {
+            dataLista: [
+                {
+                    id: 1,
+                    titulo: 'Livro Vuejs',
+                    autor: 'Criador do Vuejs'
+                },
+                {
+                    id: 2,
+                    titulo: 'Livro Java',
+                    autor: 'Criador do Java'
+                },
+                {
+                    id: 3,
+                    titulo: 'Livro PHP',
+                    autor: 'Criador do PHP'
+                },
+                {
+                    id: 4,
+                    titulo: 'Livro JS',
+                    autor: 'Criador do JavaScript'
+                },
+                {
+                    id: 5,
+                    titulo: 'Livro React',
+                    autor: 'Criador do React'
+                }
+            ]
+        }
+    },
+    template: `
+    <div name="lista" class="w-full m-10">
     <div>
         <a href="/formulario-inclusao.html">
             <svg class="h-5 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -17,12 +49,12 @@ const Lista = {
             <th class="border border-2 border-blue-500 p-2 bg-blue-600 text-white">AÇÕES</th>
         </thead>
         <tbody>
-            <tr>
-                <td class="border border-2 border-blue-500 p-2">1</td>
-                <td class="border border-2 border-blue-500 p-2">Livro 1</td>
-                <td class="border border-2 border-blue-500 p-2">Autor 1</td>
+            <tr v-for="item in dataLista">
+                <td class="border border-2 border-blue-500 p-2">{{item.id}}</td>
+                <td class="border border-2 border-blue-500 p-2">{{item.titulo}}</td>
+                <td class="border border-2 border-blue-500 p-2">{{item.autor}}</td>
                 <td class="border border-2 border-blue-500 p-2">
-                    <a href="/formulario-visualizacao.html">
+                    <router-link to="/view">
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -30,32 +62,57 @@ const Lista = {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
-                    </a>
-                    <a href="/formulario-alteracao.html">
+                    </router-link>
+                    <router-link to="/edit">
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                         </svg>
-                    </a>
-                    <a href="/formulario-exclusao.html">
+                    </router-link>
+                    <router-link to="/excluir">
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
-                    </a>
+                    </router-link>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>`
+});
 
-};
-
-const Formulario = {
-    template: `<div name="formulario-inclusao" class="w-full m-10">
-
+const Formulario = Vue.component('lista', {
+    data: function() {
+        return {
+            tituloPagina: '',
+            livro: {
+                id: '',
+                editora: '',
+                titulo: '',
+                autor: '',
+                ano: '',
+                preco: '',
+                quantidade: '',
+                tipo: ''
+            }
+        }
+    },
+    created: function() {
+        if (this.$route.name == 'Visual') {
+            this.tituloPagina = 'Visualizar um Livro'
+        } else if (this.$route.name == 'Editar') {
+            this.tituloPagina = 'Editar um Livro'
+        } else if (this.$route.name == 'Excluir') {
+            this.tituloPagina = 'Excluir um Livro'
+        }
+    },
+    template: `    <div name="formulario-inclusao" class="w-full m-10">
+    <div class="flex items-center justify-between mb-5">
+        <h1>{{tituloPagina}}</h1>
+    </div>
     <div class="flex items-center justify-between mb-5">
         <div class="flex flex-col text-center w-3/6 px-2">
             <label class="mb-1" for="id">ID</label>
@@ -132,7 +189,7 @@ const Formulario = {
     </div>
 
 </div>`
-}
+});
 
 const routes = [
     {
@@ -141,7 +198,18 @@ const routes = [
         component: Lista
     },
     {
-        path: '/form',
+        path: '/view',
+        name: 'Visual',
+        component: Formulario
+    },
+    {
+        path: '/edit',
+        name: 'Editar',
+        component: Formulario
+    },
+    {
+        path: '/excluir',
+        name: 'Excluir',
         component: Formulario
     }
 ]
