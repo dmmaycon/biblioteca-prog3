@@ -8,6 +8,11 @@ export const routes = [
         component: ListComponent
     },
     {
+        path: '/create',
+        component: FormComponent,
+        name: 'Criar'
+    },
+    {
         path: '/view/:id',
         component: FormComponent,
         name: 'Visual'

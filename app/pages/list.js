@@ -1,15 +1,19 @@
 export const ListComponent = {
     template: `
-    <div class="overflow-x-auto">
-    <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+    <div class="overflow-x-auto">    
+    <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">        
         <div class="w-full lg:w-5/6">
+        <router-link to="/create">       
+            <svg  xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </router-link>
             <div class="bg-white shadow-md rounded my-6">
                 <table class="min-w-max w-full table-auto">
                     <thead>
                         <tr class="bg-blue-300 text-black-400 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
-                            <th class="py-3 px-6 text-left">TITULO</th>
-                            <th class="py-3 px-6 text-center">AUTOR</th>
+                            <th class="py-3 px-6 text-left">AULA</th>
                             <th class="py-3 px-6 text-center">AÇÕES</th>
                         </tr>
                     </thead>
@@ -22,14 +26,9 @@ export const ListComponent = {
                             </td>
                             <td class="py-3 px-6 text-left">
                                 <div class="flex items-center">
-                                    <span class="font-medium">{{item.titulo}}</span>
+                                    <span class="font-medium">{{item.nome}}</span>
                                 </div>
-                            </td>
-                            <td class="py-3 px-6 text-center">
-                                <div class="flex items-center">
-                                    <span class="font-medium">{{item.autor}}</span>
-                                </div>
-                            </td>
+                            </td>                            
                             <td class="py-3 px-6 text-center">
                                 <div class="flex item-center justify-center">
                                     <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -65,33 +64,19 @@ export const ListComponent = {
 </div>`,
     data() {
         return {
-            dataLista: [
-                {
-                    id: 1,
-                    titulo: 'Livro Vuejs',
-                    autor: 'Criador do Vuejs'
-                },
-                {
-                    id: 2,
-                    titulo: 'Livro Java',
-                    autor: 'Criador do Java'
-                },
-                {
-                    id: 3,
-                    titulo: 'Livro PHP',
-                    autor: 'Criador do PHP'
-                },
-                {
-                    id: 4,
-                    titulo: 'Livro JS',
-                    autor: 'Criador do JavaScript'
-                },
-                {
-                    id: 5,
-                    titulo: 'Livro React',
-                    autor: 'Criador do React'
-                }
-            ]
+            dataLista: []
         }
+    },
+    mounted() {
+        fetch('http://localhost:3000/aulas', {method: 'GET', mode: 'cors'})
+        .then((response) => {    
+            response.json().then((data) => {
+                // console.table(data)
+                this.dataLista = data
+            })
+        })
+    },
+    methods: {
+        
     }
 }
